@@ -1,0 +1,163 @@
+# This file was generated automatically from conda-smithy. To update this configuration,
+# update the conda-forge.yml and/or the recipe/meta.yaml.
+# -*- mode: yaml -*-
+
+jobs:
+- job: linux
+  pool:
+    vmImage: ubuntu-latest
+  strategy:
+    matrix:
+      linux_64_familyppc64lelevel10microarchitecturepower10le:
+        CONFIG: linux_64_familyppc64lelevel10microarchitecturepower10le
+        UPLOAD_PACKAGES: 'True'
+        DOCKER_IMAGE: quay.io/condaforge/linux-anvil-cos7-x86_64
+      linux_64_familyppc64lelevel8microarchitecturepower8le:
+        CONFIG: linux_64_familyppc64lelevel8microarchitecturepower8le
+        UPLOAD_PACKAGES: 'True'
+        DOCKER_IMAGE: quay.io/condaforge/linux-anvil-cos7-x86_64
+      linux_64_familyppc64lelevel8microarchitectureppc64le:
+        CONFIG: linux_64_familyppc64lelevel8microarchitectureppc64le
+        UPLOAD_PACKAGES: 'True'
+        DOCKER_IMAGE: quay.io/condaforge/linux-anvil-cos7-x86_64
+      linux_64_familyppc64lelevel9microarchitecturepower9le:
+        CONFIG: linux_64_familyppc64lelevel9microarchitecturepower9le
+        UPLOAD_PACKAGES: 'True'
+        DOCKER_IMAGE: quay.io/condaforge/linux-anvil-cos7-x86_64
+      linux_64_familyx86_64level1microarchitecturecore2:
+        CONFIG: linux_64_familyx86_64level1microarchitecturecore2
+        UPLOAD_PACKAGES: 'True'
+        DOCKER_IMAGE: quay.io/condaforge/linux-anvil-cos7-x86_64
+      linux_64_familyx86_64level1microarchitecturek10:
+        CONFIG: linux_64_familyx86_64level1microarchitecturek10
+        UPLOAD_PACKAGES: 'True'
+        DOCKER_IMAGE: quay.io/condaforge/linux-anvil-cos7-x86_64
+      linux_64_familyx86_64level1microarchitecturenocona:
+        CONFIG: linux_64_familyx86_64level1microarchitecturenocona
+        UPLOAD_PACKAGES: 'True'
+        DOCKER_IMAGE: quay.io/condaforge/linux-anvil-cos7-x86_64
+      linux_64_familyx86_64level1microarchitecturex86_64:
+        CONFIG: linux_64_familyx86_64level1microarchitecturex86_64
+        UPLOAD_PACKAGES: 'True'
+        DOCKER_IMAGE: quay.io/condaforge/linux-anvil-cos7-x86_64
+      linux_64_familyx86_64level2microarchitecturebulldozer:
+        CONFIG: linux_64_familyx86_64level2microarchitecturebulldozer
+        UPLOAD_PACKAGES: 'True'
+        DOCKER_IMAGE: quay.io/condaforge/linux-anvil-cos7-x86_64
+      linux_64_familyx86_64level2microarchitectureivybridge:
+        CONFIG: linux_64_familyx86_64level2microarchitectureivybridge
+        UPLOAD_PACKAGES: 'True'
+        DOCKER_IMAGE: quay.io/condaforge/linux-anvil-cos7-x86_64
+      linux_64_familyx86_64level2microarchitecturenehalem:
+        CONFIG: linux_64_familyx86_64level2microarchitecturenehalem
+        UPLOAD_PACKAGES: 'True'
+        DOCKER_IMAGE: quay.io/condaforge/linux-anvil-cos7-x86_64
+      linux_64_familyx86_64level2microarchitecturepiledriver:
+        CONFIG: linux_64_familyx86_64level2microarchitecturepiledriver
+        UPLOAD_PACKAGES: 'True'
+        DOCKER_IMAGE: quay.io/condaforge/linux-anvil-cos7-x86_64
+      linux_64_familyx86_64level2microarchitecturesandybridge:
+        CONFIG: linux_64_familyx86_64level2microarchitecturesandybridge
+        UPLOAD_PACKAGES: 'True'
+        DOCKER_IMAGE: quay.io/condaforge/linux-anvil-cos7-x86_64
+      linux_64_familyx86_64level2microarchitecturesteamroller:
+        CONFIG: linux_64_familyx86_64level2microarchitecturesteamroller
+        UPLOAD_PACKAGES: 'True'
+        DOCKER_IMAGE: quay.io/condaforge/linux-anvil-cos7-x86_64
+      linux_64_familyx86_64level2microarchitecturewestmere:
+        CONFIG: linux_64_familyx86_64level2microarchitecturewestmere
+        UPLOAD_PACKAGES: 'True'
+        DOCKER_IMAGE: quay.io/condaforge/linux-anvil-cos7-x86_64
+      linux_64_familyx86_64level2microarchitecturex86_64_v2:
+        CONFIG: linux_64_familyx86_64level2microarchitecturex86_64_v2
+        UPLOAD_PACKAGES: 'True'
+        DOCKER_IMAGE: quay.io/condaforge/linux-anvil-cos7-x86_64
+      linux_64_familyx86_64level3microarchitecturebroadwell:
+        CONFIG: linux_64_familyx86_64level3microarchitecturebroadwell
+        UPLOAD_PACKAGES: 'True'
+        DOCKER_IMAGE: quay.io/condaforge/linux-anvil-cos7-x86_64
+      linux_64_familyx86_64level3microarchitecturecannonlake:
+        CONFIG: linux_64_familyx86_64level3microarchitecturecannonlake
+        UPLOAD_PACKAGES: 'True'
+        DOCKER_IMAGE: quay.io/condaforge/linux-anvil-cos7-x86_64
+      linux_64_familyx86_64level3microarchitectureexcavator:
+        CONFIG: linux_64_familyx86_64level3microarchitectureexcavator
+        UPLOAD_PACKAGES: 'True'
+        DOCKER_IMAGE: quay.io/condaforge/linux-anvil-cos7-x86_64
+      linux_64_familyx86_64level3microarchitecturehaswell:
+        CONFIG: linux_64_familyx86_64level3microarchitecturehaswell
+        UPLOAD_PACKAGES: 'True'
+        DOCKER_IMAGE: quay.io/condaforge/linux-anvil-cos7-x86_64
+      linux_64_familyx86_64level3microarchitecturemic_knl:
+        CONFIG: linux_64_familyx86_64level3microarchitecturemic_knl
+        UPLOAD_PACKAGES: 'True'
+        DOCKER_IMAGE: quay.io/condaforge/linux-anvil-cos7-x86_64
+      linux_64_familyx86_64level3microarchitectureskylake:
+        CONFIG: linux_64_familyx86_64level3microarchitectureskylake
+        UPLOAD_PACKAGES: 'True'
+        DOCKER_IMAGE: quay.io/condaforge/linux-anvil-cos7-x86_64
+      linux_64_familyx86_64level3microarchitecturex86_64_v3:
+        CONFIG: linux_64_familyx86_64level3microarchitecturex86_64_v3
+        UPLOAD_PACKAGES: 'True'
+        DOCKER_IMAGE: quay.io/condaforge/linux-anvil-cos7-x86_64
+      linux_64_familyx86_64level3microarchitecturezen:
+        CONFIG: linux_64_familyx86_64level3microarchitecturezen
+        UPLOAD_PACKAGES: 'True'
+        DOCKER_IMAGE: quay.io/condaforge/linux-anvil-cos7-x86_64
+      linux_64_familyx86_64level3microarchitecturezen2:
+        CONFIG: linux_64_familyx86_64level3microarchitecturezen2
+        UPLOAD_PACKAGES: 'True'
+        DOCKER_IMAGE: quay.io/condaforge/linux-anvil-cos7-x86_64
+      linux_64_familyx86_64level3microarchitecturezen3:
+        CONFIG: linux_64_familyx86_64level3microarchitecturezen3
+        UPLOAD_PACKAGES: 'True'
+        DOCKER_IMAGE: quay.io/condaforge/linux-anvil-cos7-x86_64
+      linux_64_familyx86_64level4microarchitecturecascadelake:
+        CONFIG: linux_64_familyx86_64level4microarchitecturecascadelake
+        UPLOAD_PACKAGES: 'True'
+        DOCKER_IMAGE: quay.io/condaforge/linux-anvil-cos7-x86_64
+      linux_64_familyx86_64level4microarchitectureicelake:
+        CONFIG: linux_64_familyx86_64level4microarchitectureicelake
+        UPLOAD_PACKAGES: 'True'
+        DOCKER_IMAGE: quay.io/condaforge/linux-anvil-cos7-x86_64
+      linux_64_familyx86_64level4microarchitectureskylake_avx512:
+        CONFIG: linux_64_familyx86_64level4microarchitectureskylake_avx512
+        UPLOAD_PACKAGES: 'True'
+        DOCKER_IMAGE: quay.io/condaforge/linux-anvil-cos7-x86_64
+      linux_64_familyx86_64level4microarchitecturex86_64_v4:
+        CONFIG: linux_64_familyx86_64level4microarchitecturex86_64_v4
+        UPLOAD_PACKAGES: 'True'
+        DOCKER_IMAGE: quay.io/condaforge/linux-anvil-cos7-x86_64
+      linux_64_familyx86_64level4microarchitecturezen4:
+        CONFIG: linux_64_familyx86_64level4microarchitecturezen4
+        UPLOAD_PACKAGES: 'True'
+        DOCKER_IMAGE: quay.io/condaforge/linux-anvil-cos7-x86_64
+  timeoutInMinutes: 360
+
+  steps:
+  # configure qemu binfmt-misc running.  This allows us to run docker containers
+  # embedded qemu-static
+  - script: |
+      docker run --rm --privileged multiarch/qemu-user-static:register --reset --credential yes
+      ls /proc/sys/fs/binfmt_misc/
+    condition: not(startsWith(variables['CONFIG'], 'linux_64'))
+    displayName: Configure binfmt_misc
+
+  - script: |
+        export CI=azure
+        export flow_run_id=azure_$(Build.BuildNumber).$(System.JobAttempt)
+        export remote_url=$(Build.Repository.Uri)
+        export sha=$(Build.SourceVersion)
+        export GIT_BRANCH=$BUILD_SOURCEBRANCHNAME
+        export FEEDSTOCK_NAME=$(basename ${BUILD_REPOSITORY_NAME})
+        if [[ "${BUILD_REASON:-}" == "PullRequest" ]]; then
+          export IS_PR_BUILD="True"
+        else
+          export IS_PR_BUILD="False"
+        fi
+        .scripts/run_docker_build.sh
+    displayName: Run docker build
+    env:
+      BINSTAR_TOKEN: $(BINSTAR_TOKEN)
+      FEEDSTOCK_TOKEN: $(FEEDSTOCK_TOKEN)
+      STAGING_BINSTAR_TOKEN: $(STAGING_BINSTAR_TOKEN)
