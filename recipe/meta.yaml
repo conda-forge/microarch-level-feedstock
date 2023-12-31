@@ -1,4 +1,4 @@
-{% set number = 1 %}
+{% set number = 2 %}
 
 package:
   name: microarch-level-split
@@ -28,14 +28,14 @@ outputs:
       description: |
         The meta-package _{{ family }}-microarch-level enforces the microarchitecture in the
         user system.
-    
+
         Note that a user would need the archspec conda package installed
         in the base environment where conda/mamba is run from.
 
         See {{ family }}-microarch-level for using this in conda recipes
       license: BSD-3-Clause
       license_file: LICENSE.txt
-    
+
   - name: {{ family }}-microarch-level
     script: install_scripts.sh
     build:
@@ -55,7 +55,7 @@ outputs:
         Use the meta-package {{ family }}-microarch-level in requirements/build in conda
         recipes to set up the compiler flags and set up the virtual package
         requirements in the run requirements.
-    
+
         When building packages on CI, level=4 will not be guaranteed, so
         you can only use level<=3 to build.
 
