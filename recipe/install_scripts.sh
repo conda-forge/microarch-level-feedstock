@@ -34,7 +34,7 @@ export CPPFLAGS="\${CPPFLAGS} ${flag}"
 EOF
 
 cat << EOF > "${PREFIX}/etc/conda/activate.d/~activate-${family}-level.bat"
-set CXXFLAGS="\%CXXFLAGS\% ${msvc_flags}"
-set CFLAGS="\%CFLAGS\% ${msvc_flags}"
-set CPPFLAGS="\%CPPFLAGS\% ${msvc_flags}"
+set CXXFLAGS="%CXXFLAGS% ${msvc_flags}"
+set CFLAGS="%CFLAGS% ${msvc_flags}"
+set CPPFLAGS="%CPPFLAGS% ${msvc_flags}"
 EOF
