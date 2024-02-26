@@ -120,6 +120,10 @@ jobs:
         CONFIG: linux_64_familyx86_64level4microarchitectureicelake
         UPLOAD_PACKAGES: 'True'
         DOCKER_IMAGE: quay.io/condaforge/linux-anvil-cos7-x86_64
+      linux_64_familyx86_64level4microarchitecturesapphirerapids:
+        CONFIG: linux_64_familyx86_64level4microarchitecturesapphirerapids
+        UPLOAD_PACKAGES: 'True'
+        DOCKER_IMAGE: quay.io/condaforge/linux-anvil-cos7-x86_64
       linux_64_familyx86_64level4microarchitectureskylake_avx512:
         CONFIG: linux_64_familyx86_64level4microarchitectureskylake_avx512
         UPLOAD_PACKAGES: 'True'
