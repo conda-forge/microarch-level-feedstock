@@ -1,4 +1,4 @@
-{% set number = 1 %}
+{% set number = 2 %}
 
 package:
   name: microarch-level-split
@@ -15,9 +15,6 @@ outputs:
       number: {{ number }}
       string: {{ number }}_{{ microarchitecture }}
       noarch: generic
-      run_exports:
-        strong:
-          - _{{ family }}-microarch-level >={{ level }}
     requirements:
       run:
         - __archspec  1={{ microarchitecture }}
