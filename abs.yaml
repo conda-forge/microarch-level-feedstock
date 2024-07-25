@@ -1,0 +1,4 @@
+# destination upon merge
+# not planned for main yet
+upload_channels:
+  - ai-staging
