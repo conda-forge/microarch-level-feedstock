@@ -37,7 +37,7 @@ outputs:
     script: install_scripts.sh
     build:
       number: {{ number }}
-      string: {{ number }}_{{ microarchitecture }}
+      string: {{ number }}
       noarch: generic
       run_exports:
         strong:
