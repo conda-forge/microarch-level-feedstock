@@ -13,50 +13,6 @@ Package license: BSD-3-Clause
 
 Summary: Meta package to build conda recipes with microarchitecture levels
 
-About _ppc64le-microarch-level
-------------------------------
-
-Home: https://github.com/conda-forge/microarch-level-feedstock
-
-Package license: BSD-3-Clause
-
-Summary: Meta package to build conda recipes with microarchitecture levels
-
-The meta-package _ppc64le-microarch-level enforces the microarchitecture in the
-user system.
-
-Note that a user would need the archspec conda package installed
-in the base environment where conda/mamba is run from.
-
-See ppc64le-microarch-level for using this in conda recipes
-
-
-About ppc64le-microarch-level
------------------------------
-
-Home: https://github.com/conda-forge/microarch-level-feedstock
-
-Package license: BSD-3-Clause
-
-Summary: Meta package to build conda recipes with microarchitecture levels
-
-Use the meta-package ppc64le-microarch-level in requirements/build in conda
-recipes to set up the compiler flags and set up the virtual package
-requirements in the run requirements.
-
-When building packages on CI, level=4 will not be guaranteed, so
-you can only use level<=3 to build.
-
-The run_exports only has a lower bound and therefore a level=2
-build can be installed on a level=3 user system. A tighter bound
-is not added because we want to be able to test both level=2 and
-level=3 on a CI machine with level=3.
-Therefore in order to prioritise the highest level, use the build
-number to prioritise the level.
-
-Only supported on Linux and macOS.
-
-
 About _x86_64-microarch-level
 -----------------------------
 
@@ -85,6 +41,50 @@ Package license: BSD-3-Clause
 Summary: Meta package to build conda recipes with microarchitecture levels
 
 Use the meta-package x86_64-microarch-level in requirements/build in conda
+recipes to set up the compiler flags and set up the virtual package
+requirements in the run requirements.
+
+When building packages on CI, level=4 will not be guaranteed, so
+you can only use level<=3 to build.
+
+The run_exports only has a lower bound and therefore a level=2
+build can be installed on a level=3 user system. A tighter bound
+is not added because we want to be able to test both level=2 and
+level=3 on a CI machine with level=3.
+Therefore in order to prioritise the highest level, use the build
+number to prioritise the level.
+
+Only supported on Linux and macOS.
+
+
+About _ppc64le-microarch-level
+------------------------------
+
+Home: https://github.com/conda-forge/microarch-level-feedstock
+
+Package license: BSD-3-Clause
+
+Summary: Meta package to build conda recipes with microarchitecture levels
+
+The meta-package _ppc64le-microarch-level enforces the microarchitecture in the
+user system.
+
+Note that a user would need the archspec conda package installed
+in the base environment where conda/mamba is run from.
+
+See ppc64le-microarch-level for using this in conda recipes
+
+
+About ppc64le-microarch-level
+-----------------------------
+
+Home: https://github.com/conda-forge/microarch-level-feedstock
+
+Package license: BSD-3-Clause
+
+Summary: Meta package to build conda recipes with microarchitecture levels
+
+Use the meta-package ppc64le-microarch-level in requirements/build in conda
 recipes to set up the compiler flags and set up the virtual package
 requirements in the run requirements.
 
