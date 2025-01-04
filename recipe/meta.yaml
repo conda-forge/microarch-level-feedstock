@@ -25,14 +25,16 @@ outputs:
       description: |
         The meta-package _{{ family }}-microarch-level enforces the microarchitecture in the
         user system.
-    
+
         Note that a user would need the archspec conda package installed
         in the base environment where conda/mamba is run from.
+        Note also that this package is not intended to be directly interacted
+        with by users.
 
         See {{ family }}-microarch-level for using this in conda recipes
       license: BSD-3-Clause
       license_file: LICENSE.txt
-    
+
   - name: {{ family }}-microarch-level
     script: install_scripts.sh
     build:
@@ -52,7 +54,7 @@ outputs:
         Use the meta-package {{ family }}-microarch-level in requirements/build in conda
         recipes to set up the compiler flags and set up the virtual package
         requirements in the run requirements.
-    
+
         When building packages on CI, level=4 will not be guaranteed, so
         you can only use level<=3 to build.
 
@@ -62,6 +64,18 @@ outputs:
         level=3 on a CI machine with level=3.
         Therefore in order to prioritise the highest level, use the build
         number to prioritise the level.
+
+        In [rare circumstances](https://github.com/conda-forge/microarch-level-feedstock/issues/13#issuecomment-2551385113)
+        where a particular level needs to be forced, this can be achieved by
+        overriding the `__archspec`
+        [virtual package](https://docs.conda.io/projects/conda/en/stable/user-guide/tasks/manage-virtual.html)
+        by setting the `CONDA_OVERRIDE_ARCHSPEC` environment variable during
+        the environment solve.
+        For example, setting `CONDA_OVERRIDE_ARCHSPEC=x86_64` will force
+        level=1. For levels higher than 1 `CONDA_OVERRIDE_ARCHSPEC=x86_64_vx`
+        will force level=x. For example, `CONDA_OVERRIDE_ARCHSPEC=x86_64_v2`
+        will force level=2.
+        Note that no checks will be done to ensure that the level is viable.
 
         Only supported on Linux and macOS.
       license: BSD-3-Clause

@@ -27,6 +27,8 @@ user system.
 
 Note that a user would need the archspec conda package installed
 in the base environment where conda/mamba is run from.
+Note also that this package is not intended to be directly interacted
+with by users.
 
 See x86_64-microarch-level for using this in conda recipes
 
@@ -54,6 +56,18 @@ level=3 on a CI machine with level=3.
 Therefore in order to prioritise the highest level, use the build
 number to prioritise the level.
 
+In [rare circumstances](https://github.com/conda-forge/microarch-level-feedstock/issues/13#issuecomment-2551385113)
+where a particular level needs to be forced, this can be achieved by
+overriding the `__archspec`
+[virtual package](https://docs.conda.io/projects/conda/en/stable/user-guide/tasks/manage-virtual.html)
+by setting the `CONDA_OVERRIDE_ARCHSPEC` environment variable during
+the environment solve.
+For example, setting `CONDA_OVERRIDE_ARCHSPEC=x86_64` will force
+level=1. For levels higher than 1 `CONDA_OVERRIDE_ARCHSPEC=x86_64_vx`
+will force level=x. For example, `CONDA_OVERRIDE_ARCHSPEC=x86_64_v2`
+will force level=2.
+Note that no checks will be done to ensure that the level is viable.
+
 Only supported on Linux and macOS.
 
 
@@ -71,6 +85,8 @@ user system.
 
 Note that a user would need the archspec conda package installed
 in the base environment where conda/mamba is run from.
+Note also that this package is not intended to be directly interacted
+with by users.
 
 See ppc64le-microarch-level for using this in conda recipes
 
@@ -97,6 +113,18 @@ is not added because we want to be able to test both level=2 and
 level=3 on a CI machine with level=3.
 Therefore in order to prioritise the highest level, use the build
 number to prioritise the level.
+
+In [rare circumstances](https://github.com/conda-forge/microarch-level-feedstock/issues/13#issuecomment-2551385113)
+where a particular level needs to be forced, this can be achieved by
+overriding the `__archspec`
+[virtual package](https://docs.conda.io/projects/conda/en/stable/user-guide/tasks/manage-virtual.html)
+by setting the `CONDA_OVERRIDE_ARCHSPEC` environment variable during
+the environment solve.
+For example, setting `CONDA_OVERRIDE_ARCHSPEC=x86_64` will force
+level=1. For levels higher than 1 `CONDA_OVERRIDE_ARCHSPEC=x86_64_vx`
+will force level=x. For example, `CONDA_OVERRIDE_ARCHSPEC=x86_64_v2`
+will force level=2.
+Note that no checks will be done to ensure that the level is viable.
 
 Only supported on Linux and macOS.
 
