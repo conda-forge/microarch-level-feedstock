@@ -1,0 +1,18 @@
+cdt_name:
+- conda
+channel_sources:
+- conda-forge
+channel_targets:
+- conda-forge main
+docker_image:
+- quay.io/condaforge/linux-anvil-x86_64:alma9
+family:
+- x86_64
+level:
+- '4'
+microarchitecture:
+- zen5
+zip_keys:
+- - microarchitecture
+  - level
+  - family
