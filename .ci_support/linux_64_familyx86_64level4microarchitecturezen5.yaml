@@ -9,9 +9,9 @@ docker_image:
 family:
 - x86_64
 level:
-- '3'
+- '4'
 microarchitecture:
-- haswell
+- zen5
 zip_keys:
 - - microarchitecture
   - level
