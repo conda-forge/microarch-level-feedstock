@@ -90,4 +90,5 @@ about:
 extra:
   feedstock-name: microarch-level
   recipe-maintainers:
+    - carterbox
     - isuruf
