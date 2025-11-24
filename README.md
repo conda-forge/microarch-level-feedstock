@@ -13,6 +13,26 @@ Package license: BSD-3-Clause
 
 Summary: Meta package to build conda recipes with microarchitecture levels
 
+About _ppc64le-microarch-level
+------------------------------
+
+Home: https://github.com/conda-forge/microarch-level-feedstock
+
+Package license: BSD-3-Clause
+
+Summary: Meta package to build conda recipes with microarchitecture levels
+
+The meta-package _ppc64le-microarch-level enforces the microarchitecture in the
+user system.
+
+Note that a user would need the archspec conda package installed
+in the base environment where conda/mamba is run from.
+Note also that this package is not intended to be directly interacted
+with by users.
+
+See ppc64le-microarch-level for using this in conda recipes
+
+
 About _x86_64-microarch-level
 -----------------------------
 
@@ -33,8 +53,8 @@ with by users.
 See x86_64-microarch-level for using this in conda recipes
 
 
-About x86_64-microarch-level
-----------------------------
+About ppc64le-microarch-level
+-----------------------------
 
 Home: https://github.com/conda-forge/microarch-level-feedstock
 
@@ -42,7 +62,7 @@ Package license: BSD-3-Clause
 
 Summary: Meta package to build conda recipes with microarchitecture levels
 
-Use the meta-package x86_64-microarch-level in requirements/build in conda
+Use the meta-package ppc64le-microarch-level in requirements/build in conda
 recipes to set up the compiler flags and set up the virtual package
 requirements in the run requirements.
 
@@ -71,8 +91,8 @@ Note that no checks will be done to ensure that the level is viable.
 Only supported on Linux and macOS.
 
 
-About _ppc64le-microarch-level
-------------------------------
+About x86_64-microarch-level
+----------------------------
 
 Home: https://github.com/conda-forge/microarch-level-feedstock
 
@@ -80,27 +100,7 @@ Package license: BSD-3-Clause
 
 Summary: Meta package to build conda recipes with microarchitecture levels
 
-The meta-package _ppc64le-microarch-level enforces the microarchitecture in the
-user system.
-
-Note that a user would need the archspec conda package installed
-in the base environment where conda/mamba is run from.
-Note also that this package is not intended to be directly interacted
-with by users.
-
-See ppc64le-microarch-level for using this in conda recipes
-
-
-About ppc64le-microarch-level
------------------------------
-
-Home: https://github.com/conda-forge/microarch-level-feedstock
-
-Package license: BSD-3-Clause
-
-Summary: Meta package to build conda recipes with microarchitecture levels
-
-Use the meta-package ppc64le-microarch-level in requirements/build in conda
+Use the meta-package x86_64-microarch-level in requirements/build in conda
 recipes to set up the compiler flags and set up the virtual package
 requirements in the run requirements.
 
@@ -147,10 +147,10 @@ Current release info
 
 | Name | Downloads | Version | Platforms |
 | --- | --- | --- | --- |
-| [![Conda Recipe](https://img.shields.io/badge/recipe-_ppc64le--microarch--level-green.svg)](https://anaconda.org/conda-forge/_ppc64le-microarch-level) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/_ppc64le-microarch-level.svg)](https://anaconda.org/conda-forge/_ppc64le-microarch-level) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/_ppc64le-microarch-level.svg)](https://anaconda.org/conda-forge/_ppc64le-microarch-level) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/_ppc64le-microarch-level.svg)](https://anaconda.org/conda-forge/_ppc64le-microarch-level) |
-| [![Conda Recipe](https://img.shields.io/badge/recipe-_x86_64--microarch--level-green.svg)](https://anaconda.org/conda-forge/_x86_64-microarch-level) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/_x86_64-microarch-level.svg)](https://anaconda.org/conda-forge/_x86_64-microarch-level) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/_x86_64-microarch-level.svg)](https://anaconda.org/conda-forge/_x86_64-microarch-level) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/_x86_64-microarch-level.svg)](https://anaconda.org/conda-forge/_x86_64-microarch-level) |
+| [![Conda Recipe](https://img.shields.io/badge/recipe-__ppc64le--microarch--level-green.svg)](https://anaconda.org/conda-forge/_ppc64le-microarch-level) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/_ppc64le-microarch-level.svg)](https://anaconda.org/conda-forge/_ppc64le-microarch-level) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/_ppc64le-microarch-level.svg)](https://anaconda.org/conda-forge/_ppc64le-microarch-level) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/_ppc64le-microarch-level.svg)](https://anaconda.org/conda-forge/_ppc64le-microarch-level) |
+| [![Conda Recipe](https://img.shields.io/badge/recipe-__x86__64--microarch--level-green.svg)](https://anaconda.org/conda-forge/_x86_64-microarch-level) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/_x86_64-microarch-level.svg)](https://anaconda.org/conda-forge/_x86_64-microarch-level) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/_x86_64-microarch-level.svg)](https://anaconda.org/conda-forge/_x86_64-microarch-level) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/_x86_64-microarch-level.svg)](https://anaconda.org/conda-forge/_x86_64-microarch-level) |
 | [![Conda Recipe](https://img.shields.io/badge/recipe-ppc64le--microarch--level-green.svg)](https://anaconda.org/conda-forge/ppc64le-microarch-level) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/ppc64le-microarch-level.svg)](https://anaconda.org/conda-forge/ppc64le-microarch-level) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/ppc64le-microarch-level.svg)](https://anaconda.org/conda-forge/ppc64le-microarch-level) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/ppc64le-microarch-level.svg)](https://anaconda.org/conda-forge/ppc64le-microarch-level) |
-| [![Conda Recipe](https://img.shields.io/badge/recipe-x86_64--microarch--level-green.svg)](https://anaconda.org/conda-forge/x86_64-microarch-level) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/x86_64-microarch-level.svg)](https://anaconda.org/conda-forge/x86_64-microarch-level) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/x86_64-microarch-level.svg)](https://anaconda.org/conda-forge/x86_64-microarch-level) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/x86_64-microarch-level.svg)](https://anaconda.org/conda-forge/x86_64-microarch-level) |
+| [![Conda Recipe](https://img.shields.io/badge/recipe-x86__64--microarch--level-green.svg)](https://anaconda.org/conda-forge/x86_64-microarch-level) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/x86_64-microarch-level.svg)](https://anaconda.org/conda-forge/x86_64-microarch-level) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/x86_64-microarch-level.svg)](https://anaconda.org/conda-forge/x86_64-microarch-level) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/x86_64-microarch-level.svg)](https://anaconda.org/conda-forge/x86_64-microarch-level) |
 
 Installing microarch-level
 ==========================
@@ -221,12 +221,12 @@ it is possible to build and upload installable packages to the
 [conda-forge](https://anaconda.org/conda-forge) [anaconda.org](https://anaconda.org/)
 channel for Linux, Windows and OSX respectively.
 
-To manage the continuous integration and simplify feedstock maintenance
+To manage the continuous integration and simplify feedstock maintenance,
 [conda-smithy](https://github.com/conda-forge/conda-smithy) has been developed.
 Using the ``conda-forge.yml`` within this repository, it is possible to re-render all of
 this feedstock's supporting files (e.g. the CI configuration files) with ``conda smithy rerender``.
 
-For more information please check the [conda-forge documentation](https://conda-forge.org/docs/).
+For more information, please check the [conda-forge documentation](https://conda-forge.org/docs/).
 
 Terminology
 ===========
@@ -253,7 +253,7 @@ merged, the recipe will be re-built and uploaded automatically to the
 everybody to install and use from the `conda-forge` channel.
 Note that all branches in the conda-forge/microarch-level-feedstock are
 immediately built and any created packages are uploaded, so PRs should be based
-on branches in forks and branches in the main repository should only be used to
+on branches in forks, and branches in the main repository should only be used to
 build distinct package versions.
 
 In order to produce a uniquely identifiable distribution:
