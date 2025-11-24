@@ -1,0 +1,104 @@
+# shellcheck shell=sh
+
+# This function takes no arguments
+# It tries to determine the name of this file in a programatic way.
+_get_sourced_filename() {
+    # shellcheck disable=SC3054,SC2296 # non-POSIX array access and bad '(' are guarded
+    if [ -n "${BASH_SOURCE+x}" ] && [ -n "${BASH_SOURCE[0]}" ]; then
+        # shellcheck disable=SC3054 # non-POSIX array access is guarded
+        basename "${BASH_SOURCE[0]}"
+    elif [ -n "$ZSH_NAME" ] && [ -n "${(%):-%x}" ]; then
+        # in zsh use prompt-style expansion to introspect the same information
+        # see http://stackoverflow.com/questions/9901210/bash-source0-equivalent-in-zsh
+        # shellcheck disable=SC2296  # bad '(' is guarded
+        basename "${(%):-%x}"
+    else
+        echo "UNKNOWN FILE"
+    fi
+}
+
+# The arguments to this are:
+# 1. activation nature {activate|deactivate}
+# 2+ program (or environment var comma value)
+# The format for 2+ is name,value, where value is an 
+# environment variable.  The original value is stored
+# in environment variable CONDA_MICROARCH_BACKUP_NAME
+# For deactivation, the distinction, NAME gets reset to
+# CONDA_MICROARCH_BACKUP_NAME, and the backup variable
+# is unset.
+_tc_activation() {
+  local act_nature="$1"; shift
+  local thing
+  local newval
+  local from
+  local to
+  local pass
+
+  if [ "${act_nature}" = "activate" ]; then
+    from=""
+    to="CONDA_MICROARCH_BACKUP_"
+  else
+    from="CONDA_MICROARCH_BACKUP_"
+    to=""
+  fi
+
+  for pass in check apply; do
+    for thing in "$@"; do
+    
+      case "${thing}" in
+        *,*)
+          newval=$(echo "${thing}" | sed "s,^[^\,]*\,\(.*\),\1,")
+          thing=$(echo "${thing}" | sed "s,^\([^\,]*\)\,.*,\1,")
+          ;;
+      esac
+      if [ "${pass}" = "apply" ]; then
+        thing=$(echo "${thing}" | tr 'a-z+-' 'A-ZX_')
+        eval oldval="\$${from}$thing"
+        if [ -n "${oldval}" ]; then
+          eval export "${to}'${thing}'=\"${oldval}\""
+        else
+          eval unset '${to}${thing}'
+        fi
+        # Don't leave garbage around after deactivation
+        if [ -n "${newval}" ] && [ "${act_nature}" = "activate" ]; then
+            eval export "'${from}${thing}=${newval}'"
+        else
+          eval unset '${from}${thing}'
+        fi
+      fi
+    done
+  done
+  return 0
+}
+
+CXXFLAGS_USED="@CXXFLAGS@"
+CFLAGS_USED="@CFLAGS@"
+CPPFLAGS_USED="@CPPFLAGS@"
+
+if [ "${CONDA_BUILD:-0}" = "1" ]; then
+  if [ -f /tmp/old-env-$$.txt ]; then
+    rm -f /tmp/old-env-$$.txt || true
+  fi
+  env > /tmp/old-env-$$.txt
+fi
+
+_tc_activation \
+  @actdeact@ \
+  "CXXFLAGS,${CXXFLAGS:-}${CXXFLAGS:+ }${CXXFLAGS_USED}" \
+  "CFLAGS,${CFLAGS:-}${CFLAGS:+ }${CFLAGS_USED}" \
+  "CPPFLAGS,${CPPFLAGS:-}${CPPFLAGS:+ }${CPPFLAGS_USED}"
+
+if [ $? -ne 0 ]; then
+  echo "ERROR: $(_get_sourced_filename) failed, see above for details"
+else
+  if [ "${CONDA_BUILD:-0}" = "1" ]; then
+    if [ -f /tmp/new-env-$$.txt ]; then
+      rm -f /tmp/new-env-$$.txt || true
+    fi
+    env > /tmp/new-env-$$.txt
+
+    echo "INFO: $(_get_sourced_filename) made the following environmental changes:"
+    diff -U 0 -rN /tmp/old-env-$$.txt /tmp/new-env-$$.txt | tail -n +4 | grep "^-.*\|^+.*" | grep -v "CONDA_BACKUP_" | sort
+    rm -f /tmp/old-env-$$.txt /tmp/new-env-$$.txt || true
+  fi
+fi
