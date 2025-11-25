@@ -10,8 +10,18 @@ elif [[ "${family}" == "ppc64le" ]]; then
   flag="-mcpu=power${level}"
 fi
 
-cat << EOF > "${PREFIX}/etc/conda/activate.d/~activate-${family}-level.sh"
-export CXXFLAGS="\${CXXFLAGS} ${flag}"
-export CFLAGS="\${CFLAGS} ${flag}"
-export CPPFLAGS="\${CPPFLAGS} ${flag}"
-EOF
+cp ${RECIPE_DIR}/actdeact_template.sh "${SRC_DIR}/activate-${family}-level.sh"
+cp ${RECIPE_DIR}/actdeact_template.sh "${SRC_DIR}/deactivate-${family}-level.sh"
+
+sed -i.bak "s|@CFLAGS@|${flag}|g" "${SRC_DIR}/activate-${family}-level.sh"
+sed -i.bak "s|@CXXFLAGS@|${flag}|g" "${SRC_DIR}/activate-${family}-level.sh"
+sed -i.bak "s|@CPPFLAGS@|${flag}|g" "${SRC_DIR}/activate-${family}-level.sh"
+sed -i.bak "s|@actdeact@|activate|g" "${SRC_DIR}/activate-${family}-level.sh"
+
+sed -i.bak "s|@CFLAGS@|${flag}|g" "${SRC_DIR}/deactivate-${family}-level.sh"
+sed -i.bak "s|@CXXFLAGS@|${flag}|g" "${SRC_DIR}/deactivate-${family}-level.sh"
+sed -i.bak "s|@CPPFLAGS@|${flag}|g" "${SRC_DIR}/deactivate-${family}-level.sh"
+sed -i.bak "s|@actdeact@|deactivate|g" "${SRC_DIR}/deactivate-${family}-level.sh"
+
+cp "${SRC_DIR}"/activate-${family}-level.sh "${PREFIX}/etc/conda/activate.d/~activate-${family}-level.sh"
+cp "${SRC_DIR}"/deactivate-${family}-level.sh "${PREFIX}/etc/conda/deactivate.d/~deactivate-${family}-level.sh"
