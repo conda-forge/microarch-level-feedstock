@@ -17,7 +17,7 @@ outputs:
       noarch: generic
     requirements:
       run:
-        - __archspec  1={{ microarchitecture }}
+        - __archspec  1.* {{ microarchitecture }}
 
     about:
       home: https://github.com/conda-forge/microarch-level-feedstock
