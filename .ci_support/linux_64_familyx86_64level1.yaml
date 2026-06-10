@@ -1,0 +1,51 @@
+archspec_build:
+- core2
+- k10
+- ^(core2|k10|nocona|x86_64|bulldozer|ivybridge|nehalem|piledriver|sandybridge|steamroller|westmere|x86_64_v2|broadwell|cannonlake|excavator|haswell|mic_knl|skylake|x86_64_v3|zen|zen2|zen3|cascadelake|icelake|sapphirerapids|skylake_avx512|x86_64_v4|zen4|zen5)$
+- nocona
+- x86_64
+build_tag:
+- core2
+- k10
+- level1
+- nocona
+- x86_64
+channel_sources:
+- conda-forge
+channel_targets:
+- conda-forge main
+docker_image:
+- quay.io/condaforge/linux-anvil-x86_64:alma9
+family:
+- x86_64
+- x86_64
+- x86_64
+- x86_64
+- x86_64
+legacy:
+- '1'
+- '1'
+- '0'
+- '1'
+- '1'
+level:
+- '1'
+- '1'
+- '1'
+- '1'
+- '1'
+pin_run_as_build:
+  python:
+    min_pin: x.x
+    max_pin: x.x
+python:
+- 3.10.* *_cpython
+- 3.11.* *_cpython
+- 3.12.* *_cpython
+- 3.13.* *_cp313
+zip_keys:
+- - build_tag
+  - legacy
+  - level
+  - family
+  - archspec_build
