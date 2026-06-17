@@ -1,29 +1,43 @@
-{% set number = 3 %}
+schema_version: 1
 
-package:
+context:
+  number: 4
+
+recipe:
   name: microarch-level-split
-  version: {{ level }}
+  version: ${{ level }}
 
 build:
-  number: {{ number }}
-  string: {{ number }}_{{ microarchitecture }}
+  number: ${{ number }}
   noarch: generic
 
 outputs:
-  - name: _{{ family }}-microarch-level
+  - package:
+      name: _${{ family }}-microarch-level
     build:
-      number: {{ number }}
-      string: {{ number }}_{{ microarchitecture }}
-      noarch: generic
+      string: ${{ number }}_${{ build_tag }}
+      variant:
+        # The legacy per-name builds are down-prioritized via auto-generated
+        # track_features so that solvers which can match the CEP 29 regex
+        # build string prefer the per-level builds.
+        down_prioritize_variant: ${{ legacy }}
     requirements:
       run:
-        - __archspec  1.* {{ microarchitecture }}
-
+        # The build matcher is either an exact microarchitecture name (legacy
+        # per-name build) or a CEP 29 regex matching every name of this level
+        # or higher in the family (per-level build); see gen.py.
+        - "__archspec[version='1.*', build='${{ archspec_build }}']"
+    tests:
+      # An installation test is not possible: the test environment could only
+      # be solved on a CI machine whose CPU matches the __archspec constraint.
+      # Assert instead that the metapackage is empty.
+      - package_contents:
+          strict: true
     about:
-      home: https://github.com/conda-forge/microarch-level-feedstock
+      homepage: https://github.com/conda-forge/microarch-level-feedstock
       summary: 'Meta package to build conda recipes with microarchitecture levels'
       description: |
-        The meta-package _{{ family }}-microarch-level enforces the microarchitecture in the
+        The meta-package _${{ family }}-microarch-level enforces the microarchitecture in the
         user system.
 
         Note that a user would need the archspec conda package installed
@@ -31,27 +45,41 @@ outputs:
         Note also that this package is not intended to be directly interacted
         with by users.
 
-        See {{ family }}-microarch-level for using this in conda recipes
+        See ${{ family }}-microarch-level for using this in conda recipes
       license: BSD-3-Clause
       license_file: LICENSE.txt
 
-  - name: {{ family }}-microarch-level
-    script: install_scripts.sh
+  - package:
+      name: ${{ family }}-microarch-level
     build:
-      number: {{ number }}
-      string: {{ number }}_{{ microarchitecture }}
-      noarch: generic
-      run_exports:
-        strong:
-          - _{{ family }}-microarch-level >={{ level }}
+      string: ${{ number }}_level${{ level }}
+      script:
+        interpreter: python
+        file: install_scripts.py
+        env:
+          MICROARCH_FAMILY: ${{ family }}
+          MICROARCH_LEVEL: ${{ level }}
     requirements:
+      build:
+        - python
       run:
         - __unix
+      run_exports:
+        strong:
+          - _${{ family }}-microarch-level >=${{ level }}
+    tests:
+      # An installation test is not possible: the test environment could only
+      # be solved on a CI machine whose CPU matches the variant's
+      # __archspec constraint. package_contents inspects the artifact instead.
+      - package_contents:
+          files:
+            - etc/conda/activate.d/~activate-${{ family }}-level.sh
+            - etc/conda/deactivate.d/~deactivate-${{ family }}-level.sh
     about:
-      home: https://github.com/conda-forge/microarch-level-feedstock
+      homepage: https://github.com/conda-forge/microarch-level-feedstock
       summary: 'Meta package to build conda recipes with microarchitecture levels'
       description: |
-        Use the meta-package {{ family }}-microarch-level in requirements/build in conda
+        Use the meta-package ${{ family }}-microarch-level in requirements/build in conda
         recipes to set up the compiler flags and set up the virtual package
         requirements in the run requirements.
 
@@ -82,7 +110,7 @@ outputs:
       license_file: LICENSE.txt
 
 about:
-  home: https://github.com/conda-forge/microarch-level-feedstock
+  homepage: https://github.com/conda-forge/microarch-level-feedstock
   summary: 'Meta package to build conda recipes with microarchitecture levels'
   license: BSD-3-Clause
   license_file: LICENSE.txt

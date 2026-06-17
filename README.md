@@ -13,15 +13,6 @@ Package license: BSD-3-Clause
 
 Summary: Meta package to build conda recipes with microarchitecture levels
 
-About _ppc64le-microarch-level
-------------------------------
-
-Home: https://github.com/conda-forge/microarch-level-feedstock
-
-Package license: BSD-3-Clause
-
-Summary: Meta package to build conda recipes with microarchitecture levels
-
 The meta-package _ppc64le-microarch-level enforces the microarchitecture in the
 user system.
 
@@ -31,7 +22,6 @@ Note also that this package is not intended to be directly interacted
 with by users.
 
 See ppc64le-microarch-level for using this in conda recipes
-
 
 About _x86_64-microarch-level
 -----------------------------
@@ -51,7 +41,6 @@ Note also that this package is not intended to be directly interacted
 with by users.
 
 See x86_64-microarch-level for using this in conda recipes
-
 
 About ppc64le-microarch-level
 -----------------------------
@@ -90,7 +79,6 @@ Note that no checks will be done to ensure that the level is viable.
 
 Only supported on Linux and macOS.
 
-
 About x86_64-microarch-level
 ----------------------------
 
@@ -128,15 +116,15 @@ Note that no checks will be done to ensure that the level is viable.
 
 Only supported on Linux and macOS.
 
-
 Current build status
 ====================
 
 
-<table><tr><td>All platforms:</td>
+<table><tr>
+    <td>All platforms:</td>
     <td>
-      <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=20721&branchName=main">
-        <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/microarch-level-feedstock?branchName=main">
+      <a href="https://github.com/conda-forge/microarch-level-feedstock/actions/workflows/conda-build.yml">
+        <img src="https://github.com/conda-forge/microarch-level-feedstock/actions/workflows/conda-build.yml/badge.svg?event=push&branch=main">
       </a>
     </td>
   </tr>
