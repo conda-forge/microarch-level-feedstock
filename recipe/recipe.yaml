@@ -1,7 +1,7 @@
 schema_version: 1
 
 context:
-  number: 5
+  number: 6
 
 recipe:
   name: microarch-level-split
@@ -62,11 +62,6 @@ outputs:
     requirements:
       build:
         - python
-      run:
-        # MSVC cannot target the level 2 feature set; a level 2 build on
-        # Windows would only duplicate level 1, so keep it unsolvable there.
-        - if: family == "x86_64" and level == "2"
-          then: __unix
       run_exports:
         strong:
           - _${{ family }}-microarch-level >=${{ level }}
@@ -113,14 +108,20 @@ outputs:
         will force level=2.
         Note that no checks will be done to ensure that the level is viable.
 
+        The activation scripts also append `-Ctarget-cpu=<level>` to
+        RUSTFLAGS, so cargo/rustc builds target the selected level as well.
+
         On Windows (x86_64 only), the activation scripts append MSVC-style
         flags instead: `/arch:AVX2` for level 3 and `/arch:AVX512` for
         level 4. These are only applied when `CC` is `cl` or `clang-cl`,
         so other toolchains do not receive flags in a syntax they cannot
-        parse. Level 1 sets no flags on Windows: MSVC's x64 baseline
-        already targets it. Level 2 is not installable on Windows (it
-        requires `__unix`): MSVC cannot target its feature set, so building
-        against it would only duplicate level 1.
+        parse. Levels 1 and 2 set no C/C++ flags on Windows: MSVC's x64
+        baseline already targets level 1 and there is no MSVC flag for
+        the level 2 feature set. RUSTFLAGS is set for every level on
+        Windows regardless of `CC`, since rustc is LLVM-based and not
+        subject to these limitations; this is also why level 2 is
+        installable on Windows, unlike in the C/C++-only predecessor of
+        this build.
         Windows users need conda >= 24.3.0, mamba 2.x
         with Windows archspec support, or pixi for the `__archspec` virtual
         package to report the CPU microarchitecture; older solvers report

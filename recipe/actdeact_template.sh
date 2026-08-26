@@ -74,6 +74,7 @@ _tc_activation() {
 CXXFLAGS_USED="@CXXFLAGS@"
 CFLAGS_USED="@CFLAGS@"
 CPPFLAGS_USED="@CPPFLAGS@"
+RUSTFLAGS_USED="@RUSTFLAGS@"
 
 if [ "${CONDA_BUILD:-0}" = "1" ]; then
   if [ -f /tmp/old-env-$$.txt ]; then
@@ -86,7 +87,8 @@ _tc_activation \
   @actdeact@ \
   "CXXFLAGS,${CXXFLAGS:-}${CXXFLAGS:+ }${CXXFLAGS_USED}" \
   "CFLAGS,${CFLAGS:-}${CFLAGS:+ }${CFLAGS_USED}" \
-  "CPPFLAGS,${CPPFLAGS:-}${CPPFLAGS:+ }${CPPFLAGS_USED}"
+  "CPPFLAGS,${CPPFLAGS:-}${CPPFLAGS:+ }${CPPFLAGS_USED}" \
+  "RUSTFLAGS,${RUSTFLAGS:-}${RUSTFLAGS:+ }${RUSTFLAGS_USED}"
 
 if [ $? -ne 0 ]; then
   echo "ERROR: $(_get_sourced_filename) failed, see above for details"
